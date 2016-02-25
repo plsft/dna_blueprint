@@ -1,0 +1,16 @@
+*.txt
+*.dll
+*.pdb
+*.cache
+*.force
+*.force
+*.suo
+*.exe
+*.user
+.vs/
+obj/
+debug/
+bin/
+Properties/PublishProfiles/
+.sass-cache/
+.tmp/

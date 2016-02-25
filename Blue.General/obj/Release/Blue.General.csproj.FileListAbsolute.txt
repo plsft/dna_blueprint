@@ -1,0 +1,10 @@
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\Blue.General.dll
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\Blue.General.pdb
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\Helix.dll
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\RazorTemplates.Core.dll
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\System.Web.Razor.dll
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\Helix.pdb
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\RazorTemplates.Core.xml
+C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Release\System.Web.Razor.xml
+C:\plsft\kellstrom\src\Blueprint\Blue.General\obj\Release\Blue.General.dll
+C:\plsft\kellstrom\src\Blueprint\Blue.General\obj\Release\Blue.General.pdb

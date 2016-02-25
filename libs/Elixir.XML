@@ -1,0 +1,1194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elixir</name>
+    </assembly>
+    <members>
+        <member name="T:Elixir.Data.ElixirPassiveGenericRepository`1">
+            <summary>
+            ElixirGenericRepository base class - partial - to add more methods, expand with partial class file, e.g. ElixirGenericRepository.Events.cs
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Elixir.Infra.DynamicModel">
+            <summary>
+            A class that wraps your database table in Dynamic Funtime
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.CreateFrom(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Creates a new Expando from a Form POST - white listed against the columns in the DB
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.CreateFrom(System.String)">
+            <summary>
+            Returns dynamic object from JSON object.
+            </summary>
+            <param name="jsonObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.DefaultValue(System.Object)">
+            <summary>
+            Gets a default value for the column
+            </summary>
+        </member>
+        <member name="F:Elixir.Infra.DynamicModel._schema">
+            <summary>
+            List out all the schema bits for use with ... whatever
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Query(System.String,System.Object[])">
+            <summary>
+            Enumerates the reader yielding the result - thanks to Jeroen Haegebaert
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Scalar(System.String,System.Object[])">
+            <summary>
+            Returns a single result
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.CreateCommand(System.String,System.Data.Common.DbConnection,System.Object[])">
+            <summary>
+            Creates a DBCommand that you can use for loving your database.
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.OpenConnection">
+            <summary>
+            Returns and OpenConnection
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.BuildCommands(System.Object[])">
+            <summary>
+            Builds a set of Insert and Update commands based on the passed-on objects.
+            These objects can be POCOs, Anonymous, NameValueCollections, or Expandos. Objects
+            With a PK property (whatever PrimaryKeyField is set to) will be created at UPDATEs
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Execute(System.Collections.Generic.IEnumerable{System.Data.Common.DbCommand})">
+            <summary>
+            Executes a series of DBCommands in a transaction
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.HasPrimaryKey(System.Object)">
+            <summary>
+            Conventionally introspects the object passed in for a field that 
+            looks like a PK. If you've named your PrimaryKeyField, this becomes easy
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.GetPrimaryKey(System.Object)">
+            <summary>
+            If the object passed in has a property with the same name as your PrimaryKeyField
+            it is returned here.
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.All(System.String,System.String,System.Int32,System.String,System.Object[])">
+            <summary>
+            Returns all records complying with the passed-in WHERE clause and arguments, 
+            ordered as specified, limited (TOP) by limit.
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Paged(System.String,System.String,System.String,System.Int32,System.Int32,System.Object[])">
+            <summary>
+            Returns a dynamic PagedResult. Result properties are Items, TotalPages, and TotalRecords.
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Single(System.String,System.Object[])">
+            <summary>
+            Returns a single row from the database
+            </summary>
+            <param name="where">e.g. "1=1 AND ID=4 etc." </param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Single(System.Int32,System.String)">
+            <summary>
+            Returns a single row from the database
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.KeyValues(System.String)">
+            <summary>
+            This will return a string/object dictionary for dropdowns etc
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.ItemAsDictionary(System.Dynamic.ExpandoObject)">
+            <summary>
+            This will return an Expando as a Dictionary
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.DictionaryAsString(System.Object)">
+            <summary>
+            Returns a clean string with name/value pair collection from expando/dynamic for logging or audit 
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Save(System.Object[])">
+            <summary>
+            Executes a set of objects as Insert or Update commands based on their property settings, within a transaction.
+            These objects can be POCOs, Anonymous, NameValueCollections, or Expandos. Objects
+            With a PK property (whatever PrimaryKeyField is set to) will be created at UPDATEs
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.CreateUpdateCommand(System.Object,System.Object)">
+            <summary>
+            Creates a command for use with transactions - internal stuff mostly, but here for you to play with
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.CreateDeleteCommand(System.String,System.Object,System.Object[])">
+            <summary>
+            Removes one or more records from the DB according to the passed-in WHERE
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Insert(System.Object)">
+            <summary>
+            Adds a record to the database. You can pass in an Anonymous object, an ExpandoObject,
+            A regular old POCO, or a NameValueColletion from a Request.Form or Request.QueryString
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Update(System.Object,System.Object)">
+            <summary>
+            Updates a record in the database. You can pass in an Anonymous object, an ExpandoObject,
+            A regular old POCO, or a NameValueCollection from a Request.Form or Request.QueryString
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.Delete(System.Object,System.String,System.Object[])">
+            <summary>
+            Removes one or more records from the DB according to the passed-in WHERE
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.ValidatesPresenceOf(System.Dynamic.ExpandoObject,System.String,System.String)">
+            <summary>
+            Verifies the presence of "field" passed in the dynamic object 
+            </summary>
+            <param name="item">expando/dynamic object to inspect</param>
+            <param name="field">name of field to verify is in dictionary</param>
+            <param name="message">message to return to client if field is not present</param>
+        </member>
+        <member name="M:Elixir.Infra.DynamicModel.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            A helpful query tool
+            </summary>
+        </member>
+        <member name="P:Elixir.Infra.DynamicModel.Prototype">
+            <summary>
+            Creates an empty Expando set with defaults from the DB
+            </summary>
+        </member>
+        <member name="P:Elixir.Infra.DynamicModel.Columns">
+            <summary>
+            CSV list of columns in current table 
+            </summary>
+        </member>
+        <member name="P:Elixir.Infra.DynamicModel.ColumnCollection">
+            <summary>
+            Returns IEnumerable collection of the columns for the currently referenced table. 
+            </summary>
+        </member>
+        <member name="T:Elixir.Data.ElixirPetaRepository">
+            <summary>
+            Core Elixir Repo
+            </summary>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.#ctor(System.String,System.Boolean)">
+            <summary>
+            Core Repo Constructor
+            </summary>
+            <param name="connectionStringName"></param>
+            <param name="keepConnectionAlive"></param>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.#ctor(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="keepConnectionAlive"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.Single``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.First``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.Last``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.FirstBy``1(System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <param name="sortKeyName"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.LastBy``1(System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <param name="sortKeyName"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.Query``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.Query``1(System.String,System.String,System.Int32,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="where"></param>
+            <param name="orderBy"></param>
+            <param name="limit"></param>
+            <param name="columns"></param>
+            <param name="args"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.Query``1(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.PagedQuery``1(System.Int64,System.Int64,System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="itemsPerPage"></param>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.PagedQuery``1(System.Int64,System.Int64,Elixir.Infra.Peta.Sql)">
+            <summary>
+            
+            </summary>
+            <param name="pageNumber"></param>
+            <param name="itemsPerPage"></param>
+            <param name="sql"></param>
+            <typeparam name="TPassType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.Exists``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Data.ElixirPetaRepository.SingleOrDefault``1(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="primaryKey"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Infra.ObjectExtensions.AddParams(System.Data.Common.DbCommand,System.Object[])">
+            <summary>
+            Extension method for adding in a bunch of parameters
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.ObjectExtensions.AddParam(System.Data.Common.DbCommand,System.Object)">
+            <summary>
+            Extension for adding single parameter
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.ObjectExtensions.ToExpandoList(System.Data.IDataReader)">
+            <summary>
+            Turns an IDataReader to a Dynamic list of things
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.ObjectExtensions.ToExpando(System.Object)">
+            <summary>
+            Turns the object into an ExpandoObject
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.ObjectExtensions.ToDictionary(System.Object)">
+            <summary>
+            Turns the object into a Dictionary
+            </summary>
+        </member>
+        <member name="T:Elixir.Infra.DB">
+            <summary>
+            Convenience class for opening/executing data
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.Peta.Database.OnException(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Elixir.Infra.Peta.Database.ExecuteScalar``1(System.String,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="sql"></param>
+            <param name="args"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="P:Elixir.Infra.Peta.Database.DatabaseProviderType">
+            <summary>
+            exposes current DbProvider
+            </summary>
+        </member>
+        <member name="M:Elixir.Infra.PetaExtensions.HasValue(System.Object)">
+            <summary>
+            Assumes default values are "" (string), null for all other types
+            </summary>
+            <param name="f"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Parse(System.String)">
+            <summary>from JsonSring to DynamicJson</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Parse(System.String,System.Text.Encoding)">
+            <summary>from JsonSring to DynamicJson</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Parse(System.IO.Stream)">
+            <summary>from JsonSringStream to DynamicJson</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Parse(System.IO.Stream,System.Text.Encoding)">
+            <summary>from JsonSringStream to DynamicJson</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Serialize(System.Object)">
+            <summary>create JsonSring from primitive or IEnumerable or Object({public property name:property value})</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.#ctor">
+            <summary>create blank JSObject</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.IsDefined(System.String)">
+            <summary>has property or not</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.IsDefined(System.Int32)">
+            <summary>has property or not</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Delete(System.String)">
+            <summary>delete property</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Delete(System.Int32)">
+            <summary>delete property</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.Deserialize``1">
+            <summary>mapping to Array or Class by Public PropertyName</summary>
+        </member>
+        <member name="M:Elixir.Json.DynamicJson.ToString">
+            <summary>Serialize to JsonString</summary>
+        </member>
+        <member name="T:Elixir.Security.CoreEncryptionBase">
+            <summary>
+            Summary description for CoreEncryption.
+            </summary>
+        </member>
+        <member name="M:Elixir.Security.CoreEncryptionBase.Encrypt(System.String,System.String,System.String,System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+            Encrypts specified plaintext using Rijndael symmetric key algorithm
+            and returns a base64-encoded result.
+            </summary>
+            <param name="plainText">
+            Plaintext value to be encrypted.
+            </param>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived. The
+            derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that this
+            passphrase is an ASCII string.
+            </param>
+            <param name="saltValue">
+            Salt value used along with passphrase to generate password. Salt can
+            be any string. In this example we assume that salt is an ASCII string.
+            </param>
+            <param name="hashAlgorithm">
+            Hash algorithm used to generate password. Allowed values are: "MD5" and
+            "SHA1". SHA1 hashes are a bit slower, but more secure than MD5 hashes.
+            </param>
+            <param name="passwordIterations">
+            Number of iterations used to generate password. One or two iterations
+            should be enough.
+            </param>
+            <param name="initVector">
+            Initialization vector (or IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be 
+            exactly 16 ASCII characters long.
+            </param>
+            <param name="keySize">
+            Size of encryption key in bits. Allowed values are: 128, 192, and 256. 
+            Longer keys are more secure than shorter keys.
+            </param>
+            <returns>
+            Encrypted value formatted as a base64-encoded string.
+            </returns>		
+        </member>
+        <member name="M:Elixir.Security.CoreEncryptionBase.Decrypt(System.String,System.String,System.String,System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+            Decrypts specified ciphertext using Rijndael symmetric key algorithm.
+            </summary>
+            <param name="cipherText">
+            Base64-formatted ciphertext value.
+            </param>
+            <param name="passPhrase">
+            Passphrase from which a pseudo-random password will be derived. The
+            derived password will be used to generate the encryption key.
+            Passphrase can be any string. In this example we assume that this
+            passphrase is an ASCII string.
+            </param>
+            <param name="saltValue">
+            Salt value used along with passphrase to generate password. Salt can
+            be any string. In this example we assume that salt is an ASCII string.
+            </param>
+            <param name="hashAlgorithm">
+            Hash algorithm used to generate password. Allowed values are: "MD5" and
+            "SHA1". SHA1 hashes are a bit slower, but more secure than MD5 hashes.
+            </param>
+            <param name="passwordIterations">
+            Number of iterations used to generate password. One or two iterations
+            should be enough.
+            </param>
+            <param name="initVector">
+            Initialization vector (or IV). This value is required to encrypt the
+            first block of plaintext data. For RijndaelManaged class IV must be
+            exactly 16 ASCII characters long.
+            </param>
+            <param name="keySize">
+            Size of encryption key in bits. Allowed values are: 128, 192, and 256.
+            Longer keys are more secure than shorter keys.
+            </param>
+            <returns>
+            Decrypted string value.
+            </returns>
+            <remarks>
+            Most of the logic in this function is similar to the Encrypt
+            logic. In order for decryption to work, all parameters of this function
+            - except cipherText value - must match the corresponding parameters of
+            the Encrypt function which was called to generate the
+            ciphertext.
+            </remarks>		
+        </member>
+        <member name="M:Elixir.Security.Crypto.SimpleHash(System.String,Elixir.Security.Crypto.EncFormat)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+            <param name="ef"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.Crypto.Encrypt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.Crypto.Decrypt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.Crypto.GetEncFormat">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Elixir.Security.EncryptedUrl">
+            <summary>
+            EncryptedUrl
+            </summary>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="queryString"></param>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.Parse(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="queryString"></param>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.GetEnumerator">
+            <summary>
+            for IEnumerable interface
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.ToString(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="unicode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Elixir.Security.EncryptedUrl.myQueryString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Elixir.Security.EncryptedUrl.ClearQueryString">
+            <summary>
+            Clear Query String
+            </summary>
+        </member>
+        <member name="P:Elixir.Security.EncryptedUrl.Item(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Elixir.Security.EncryptedUrl.StringEncrypter">
+            <summary>
+            StringEncyrptor
+            </summary>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.StringEncrypter.Encrypt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.StringEncrypter.Decrypt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.StringEncrypter.CreateAlgorithm">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Security.EncryptedUrl.StringEncrypter.ReadCryptoData(System.Security.Cryptography.ICryptoTransform,System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="transformer"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Elixir.Utility.ComparableString">
+            <summary>
+            A string wrapper class that provides comparisons of strings with operators.
+            This gives us the ability to use operator comparisons on strings in lambda expressions for DynamicXpath predicates.
+            </summary>
+            <remarks>
+            Microsoft has hinted at providing extension operator overloading and extension properties in future versions of C#.
+            This will reduce the need for this wrapper class.
+            </remarks>
+            <example>
+            (person) => person.Name >= "C"
+            </example>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.#ctor(System.String)">
+            <summary>
+            Wrap the given string
+            </summary>
+            <param name="str">The wrapped string</param>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.ToString">
+            <summary>
+            Get the string encapsulated by this object
+            </summary>
+            <returns>The wrapped string</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.Equals(System.Object)">
+            <summary>
+            Returns true if the given object is a string equal to the wrapped string or if the 
+            object is a ComparableString that wraps the same string.
+            </summary>
+            <param name="obj">The object to test equality against</param>
+            <returns>true if the given object is a string equal to the wrapped string or if the 
+            object is a ComparableString that wraps the same string</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.GetHashCode">
+            <summary>
+            Get the hash code of the wrapped string
+            </summary>
+            <returns>the hash code of the wrapped string</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_Implicit(Elixir.Utility.ComparableString)~System.String">
+            <summary>
+            Implicitly convert the ComparableString to a System.String.
+            </summary>
+            <param name="c">The ComparableString to convert</param>
+            <returns>The string equivalent of the given ComparableString</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_Implicit(System.String)~Elixir.Utility.ComparableString">
+            <summary>
+            Implicitly convert the specified string to a ComparableString.
+            </summary>
+            <param name="str">The System.String to convert</param>
+            <returns>The ComparableString equivalent of the given string</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_Equality(Elixir.Utility.ComparableString,Elixir.Utility.ComparableString)">
+            <summary>
+            Determine if the ComparableStrings have the same value
+            </summary>
+            <param name="a">The first ComparableString</param>
+            <param name="b">The second ComparableString</param>
+            <returns>true if the values the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_Inequality(Elixir.Utility.ComparableString,Elixir.Utility.ComparableString)">
+            <summary>
+            Determine if the ComparableStrings have different values
+            </summary>
+            <param name="a">The first ComparableString</param>
+            <param name="b">The second ComparableString</param>
+            <returns>true if the values are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_GreaterThan(Elixir.Utility.ComparableString,Elixir.Utility.ComparableString)">
+            <summary>
+            Determine if the first ComparableString is greater than the second ComparableString
+            </summary>
+            <param name="a">The first ComparableString</param>
+            <param name="b">The second ComparableString</param>
+            <returns>true if a is greater than b; otherwise, false.</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_GreaterThanOrEqual(Elixir.Utility.ComparableString,Elixir.Utility.ComparableString)">
+            <summary>
+            Determine if the first ComparableString is greater than or equal to the second ComparableString
+            </summary>
+            <param name="a">The first ComparableString</param>
+            <param name="b">The second ComparableString</param>
+            <returns>true if a is greater than or equal b; otherwise, false.</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_LessThan(Elixir.Utility.ComparableString,Elixir.Utility.ComparableString)">
+            <summary>
+            Determine if the first ComparableString is less than to the second ComparableString
+            </summary>
+            <param name="a">The first ComparableString</param>
+            <param name="b">The second ComparableString</param>
+            <returns>true if a is less than b; otherwise, false.</returns>
+        </member>
+        <member name="M:Elixir.Utility.ComparableString.op_LessThanOrEqual(Elixir.Utility.ComparableString,Elixir.Utility.ComparableString)">
+            <summary>
+            Determine if the first ComparableString is less than or equal to the second ComparableString
+            </summary>
+            <param name="a">The first ComparableString</param>
+            <param name="b">The second ComparableString</param>
+            <returns>true if a is less than or equal b; otherwise, false.</returns>
+        </member>
+        <member name="P:Elixir.Utility.ComparableString.Data">
+            <summary>
+            The wrapped string
+            </summary>
+        </member>
+        <member name="M:Elixir.Utility.DatabaseOps.ExecuteSqlNonQuery(System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlCommand,System.Boolean,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Executes Insert, Delete, or Update
+            </summary>
+            <param name="conn"></param>
+            <param name="sql"></param>
+            <param name="closeConnection"> </param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.DatabaseOps.ExecuteSqlQuery(System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlCommand,System.Boolean,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Executes Selects
+            </summary>
+            <param name="conn"></param>
+            <param name="sql"></param>
+            <param name="closeConnection"> </param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.DatabaseOps.ExecuteSqlQueryRow(System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlCommand,System.Boolean,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Executes query, returns top 1 row.
+            </summary>
+            <param name="conn"></param>
+            <param name="sql"></param>
+            <param name="closeConnection"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.DatabaseOps.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlCommand,System.Boolean,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Executes Scalar Select
+            </summary>
+            <param name="conn"></param>
+            <param name="sql"></param>
+            <param name="closeConnection"> </param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.FileOps.Loadfile(System.String)">
+            <summary>
+            Loads File; returns string of contents 
+            </summary>
+            <param name="filenameandPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.FileOps.Writefile(System.String,System.String,System.Boolean,System.Object[])">
+            <summary>
+            Writes File to passed directory
+            </summary>
+            <param name="filenameandPath"></param>
+            <param name="message"></param>
+            <param name="append"> </param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Elixir.Utility.General.GenerateRandomCode">
+            <summary>
+            Random code; default length=8;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.General.GenerateRandomCode(System.Int32)">
+            <summary>
+            Returns Random
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.General.GenerateRandomPassword(System.Int32)">
+            <summary>
+            Returns random password
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.General.GenerateRandomUniqueId">
+            <summary>
+            Returns 32-length unique identifier (format: 00000000000000000000000000000000) 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.General.GenerateRandomUniqueId64">
+            <summary>
+            Returns 64-length unique identifier (format: 00000000000000000000000000000000) 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.Strings.RemoveHtml(System.String)">
+            <summary>
+            Remove Html
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.Strings.SqlSafeString(System.String)">
+            <summary>
+            Sql Safe String
+            </summary>
+            <param name="sql"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.Strings.Xmlify(System.String,System.Char,System.Char,System.Boolean)">
+            <summary>
+            Convert to XML
+            </summary>
+            <param name="str"></param>
+            <param name="splitchar"></param>
+            <param name="valuepairsplitchar"></param>
+            <param name="removeHtml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.Strings.NameValueCollectionToString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Convert To NV Pairs
+            </summary>
+            <param name="nv"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.Strings.ConvertArrayToCsv(System.Collections.ArrayList)">
+            <summary>
+            Convert Array to CSV
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.Strings.ToPipeList(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Convert Array to PSV
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Utility.TypeMapper`1.Map(System.Collections.Specialized.NameValueCollection,`0)">
+            <summary>
+            Maps name value collection to type T
+            </summary>
+            <param name="coll">NV pairs</param>
+            <param name="destination">T object</param>
+        </member>
+        <member name="M:Elixir.Utility.TypeMapper`1.Map(System.Object,`0)">
+            <summary>
+            Maps dynamic object to Expando, then T
+            </summary>
+            <param name="source"></param>
+            <param name="destination"></param>
+        </member>
+        <member name="M:Elixir.Utility.TypeMapper`1.Map(System.Dynamic.ExpandoObject,`0)">
+            <summary>
+            Maps ExpandoObject to T
+            </summary>
+            <param name="source"></param>
+            <param name="destination"></param>
+        </member>
+        <member name="T:Elixir.Xml.DynamicXpath">
+             <summary>
+             This class allows you to directly navigate XML documents in a similar fashion to XPath using .NET.
+             </summary>
+             <example>
+                 // If you intend to use lambda expressions, you'll need to declare an IPerson interface to 
+                 // work around some C# limitations.
+                             
+                 // Resolves to: "/*/Contacts/Contact[Name = 'Tony']/Phone[1]/text()"
+                 string tonyPhoneNumber = addressBook.Contacts.Contact["Name = 'Tony'"].Phone;
+                 string tonyPhoneNumber2 = addressBook.Contacts.Contact["Name = 'Tony'"].Phone.Value();
+                 string tonyPhoneNumber3 = addressBook.Contacts.Contact["Name = 'Tony'"].Phone[0].Value();
+            
+                 // Resolves to: "/*/Contacts/Contact[Name = 'Steph']/Phone[1]/text()"
+                 // Currently not in supported in C# 4.0
+                 // C# 4.0 does not support operations on dynamic types in Expression&lt;TDelegate&gt;
+                 //string stephPhoneNumber = addressBook.Contacts.Contact[() =&gt; p.Name == 'Steph'].Phone;
+                 //string stephPhoneNumber2 = addressBook.Contacts.Contact[p =&gt; p.Name == 'Steph'].Phone.Value();
+            
+                 // Resolves to: "/*/Contacts/Contact[Name = 'Steph']/Phone[1]/text()"
+                 // Workaround for the above C# 4.0 limitation using IPerson interface and declaring Expression outside of dynamic object
+                 Expression&lt;Func&lt;IPerson, bool&gt;&gt; nameEqualsSteph = (p) =&gt; p.Name == "Steph";
+                 string stephPhoneNumber3 = addressBook.Contacts.Contact[nameEqualsSteph].Phone;
+            
+                 // Resolves to: "/*/Contacts/Contact[Name = 'Steph']/Phone[1]/text()"
+                 // Currently not in supported in C# 4.0
+                 //List&lt;string&gt; tonyAndStephsPhoneNumbers = addressBook.Contacts.Contact[p =&gt; p.Name == "Tony" || p.Name == 'Steph'].Phone;
+            
+                 // Resolves to: "/*/Contacts/Contact[Name = 'Tony' or Name = 'Steph']/Phone[1]/text()"
+                 // Workaround for the above C# 4.0 limitation.  We use a helper interface (IPerson) to get around some of the limitations.
+                 // String comparisions (greater than, less than, ...) are supported via the DynamicTools.ComparableString class.
+                 // There is speculation that C# will support extension operator overloading in a future version.
+                 Expression&lt;Func&lt;IPerson, bool&gt;&gt; nameEqualsTonyOrSteph = (p) =&gt; p.Name == "Tony" || p.Name == "Steph";
+                 List&lt;string&gt; tonyAndStephsPhoneNumbers2 = addressBook.Contacts.Contact[nameEqualsTonyOrSteph].Phone;
+            
+                 // Resolves to: "/*/Contacts/Contact/Phone"
+                 XmlNodeList allPhoneNumberNodes = addressBook.Contacts.Contact.Phone;
+            
+                 // Resolves to: "/*/Contacts/Contact/Phone/text()"
+                 List&lt;string&gt; allPhoneNumbers = addressBook.Contacts.Contact.Phone;
+                 IEnumerable&lt;string&gt; allPhoneNumbers2 = addressBook.Contacts.Contact.Phone.Values();
+            
+                 // Resolves to: "/*/Contacts/Contact[1]"
+                 XmlNode firstContact = addressBook.Contacts.Contact;
+                 XmlNode firstContact2 = addressBook.Contacts.Contact.Node();
+                 XmlNode firstContact3 = addressBook.Contacts.Contact[0].Node();
+            
+                 // Resolves to: "/*/Contacts/Contact[Name = 'Tony']/Phone[1]/@Tag"
+                 string phoneTag = addressBook.Contacts.Contact["Name = 'Tony'"].Phone.Attribute("Tag");
+            
+                 // Enumerating over the dynamic XPath
+                 foreach (dynamic contact in addressBook.Contacts.Contact)
+                 {
+                     Console.WriteLine(contact.Name);
+                 }
+             </example>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            Construct a dynamic XPath based on the specified XML document
+            </summary>
+            <param name="doc">The XML document to query</param>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.#ctor(System.Xml.XmlElement)">
+            <summary>
+            Construct a dynamic XPath based on the specified XML element
+            </summary>
+            <param name="element">The XML element to start query from</param>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.#ctor(Elixir.Xml.DynamicXpath,System.String)">
+            <summary>
+            Construct a child dynamic XPath belonging to the specified parent.
+            </summary>
+            <param name="parent">The parent dyanmic XPath</param>
+            <param name="step">The XPath step</param>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Load(System.Xml.XmlDocument)">
+            <summary>
+            Create a dyanic XPath to query the specified document
+            </summary>
+            <param name="doc">The document to create DynamicXPath from</param>
+            <returns>A dynamic XPath to query the specified document</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Load(System.Xml.XmlElement)">
+            <summary>
+            Create a dyanic XPath to query the specified element
+            </summary>
+            <param name="element">The element to create DynamicXPath from</param>
+            <returns>A dynamic XPath to query the specified element</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Load(System.String)">
+            <summary>
+            Create a dyanic XPath to query the specified file
+            </summary>
+            <param name="filename">The file to query</param>
+            <returns>A dynamic XPath to query the specified file</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.LoadXml(System.String)">
+            <summary>
+            Create a dyanic XPath to query the specified xml data
+            </summary>
+            <param name="xml">The xml data query</param>
+            <returns>A dynamic XPath to query the specified xml data</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.GetDocument">
+            <summary>
+            Get the document
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.GetRoot">
+            <summary>
+            Get the root dyanamic XPath
+            </summary>
+            <returns>A dynamic XPath that starts at the root of the document</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Used internally.  Do not call this method.
+            </summary>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.ToXpath">
+            <summary>
+            Get the generated XPath
+            </summary>
+            <returns>The XPath statement represented by the dyanmic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Nodes">
+            <summary>
+            Get the nodes matched by this dynamic XPath
+            </summary>
+            <returns>The matching nodes</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Node">
+            <summary>
+            Get the first node matched by this dynamic XPath
+            </summary>
+            <returns>The first node matching this dynamic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Attributes(System.String)">
+            <summary>
+            Get the attributes with the given name for all matching nodes
+            </summary>
+            <param name="attributeName">The attribute name</param>
+            <returns>All the attributes with the given name for all the matched nodes</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Attribute(System.String)">
+            <summary>
+            Gets the attribute with the given name for the first node matched by this dynamic XPath
+            </summary>
+            <param name="attributeName">The attribute name</param>
+            <returns>The attribute with the given name for the first node matched by this dynamic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Value">
+            <summary>
+            Gets the value for the first node matched by this dynamic XPath
+            </summary>
+            <returns>The value for the first node matched by this dynamic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Value``1">
+            <summary>
+            Gets the value in the specified type for the first node matched by this dynamic XPath
+            </summary>
+            <typeparam name="TResult">The return type</typeparam>
+            <returns>The value in the specified type for the first node matched by this dynamic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Values">
+            <summary>
+            Gets the values for the nodes matched by this dynamic XPath
+            </summary>
+            <returns>The values for the nodes matched by this dynamic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Values``1">
+            <summary>
+            Gets the values in the specified type for the nodes matched by this dynamic XPath
+            </summary>
+            <typeparam name="TResult">The return type</typeparam>
+            <returns>The values in the specified type for the nodes matched by this dynamic XPath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.Count">
+            <summary>
+            Get the number of nodes in the node list
+            </summary>
+            <returns>The number of nodes in the node list</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.op_Implicit(Elixir.Xml.DynamicXpath)~System.String">
+            <summary>
+            Implicity convert dynamic XPath to a string
+            </summary>
+            <param name="xpath">The dynamic xpath</param>
+            <returns>The value of the first node matching the dynamic xpath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.op_Implicit(Elixir.Xml.DynamicXpath)~System.Collections.Generic.List{System.String}">
+            <summary>
+            Implicity convert dynamic XPath to its list of matching string values
+            </summary>
+            <param name="xpath">The dynamic xpath</param>
+            <returns>The list of values for the nodes matching the dynamic xpath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.op_Implicit(Elixir.Xml.DynamicXpath)~System.Xml.XmlNodeList">
+            <summary>
+            Implicity convert dynamic XPath an XML node list
+            </summary>
+            <param name="xpath">The dynamic xpath</param>
+            <returns>The nodes matching the dynamic xpath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.op_Implicit(Elixir.Xml.DynamicXpath)~System.Xml.XmlNode">
+            <summary>
+            Implicity convert dynamic XPath an XML node
+            </summary>
+            <param name="xpath">The dynamic xpath</param>
+            <returns>The first node matching the dynamic xpath</returns>
+        </member>
+        <member name="M:Elixir.Xml.DynamicXpath.GetEnumerator">
+            <summary>
+            Get enumerator to enumerate over all the dynamic XPaths from xpath[0] to xpath[n - 1].
+            </summary>
+            <returns>An enumerator to enumerate over all the dynamic XPaths</returns>
+        </member>
+        <member name="P:Elixir.Xml.DynamicXpath.Item(System.Int32)">
+            <summary>
+            Creates a child selector.  The index is zero-based.
+            </summary>
+            <param name="index">The index of the child</param>
+            <returns>The resulting dynamic XPath</returns>
+        </member>
+        <member name="P:Elixir.Xml.DynamicXpath.Item(System.String)">
+            <summary>
+            Create a predicate
+            </summary>
+            <param name="predicate">The predicate string</param>
+            <returns>The resulting dynamic XPath</returns>
+        </member>
+        <member name="P:Elixir.Xml.DynamicXpath.Item(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Creates an XPath predicate based on the specified predicate expression.
+            Currently not supported by C# 4.0.
+            </summary>
+            <remarks>
+            Maybe dynamic types will be supported in labda expression in future C# release.
+            </remarks>
+            <param name="predicate">A binary Expression</param>
+            <returns>The resulting dynamic XPath</returns>
+        </member>
+        <member name="P:Elixir.Xml.DynamicXpath.Item(System.Object[])">
+            <summary>
+            Creates an XPath predicate based on the specified example objects.
+            </summary>
+            <param name="exampleObjects">Example objects to match</param>
+            <returns>The resulting dynamic XPath</returns>
+        </member>
+        <member name="P:Elixir.Xml.DynamicXpath.Item(Elixir.Xml.Example[])">
+            <summary>
+            Creates an XPath predicate based on the specified example.
+            </summary>
+            <param name="examples">Example to match</param>
+            <returns>The resulting dynamic XPath</returns>
+        </member>
+        <member name="T:Elixir.Xml.Step">
+            <summary>
+            XPath step generator
+            </summary>
+        </member>
+        <member name="T:Elixir.Xml.Example">
+            <summary>
+            Wraps example objects
+            </summary>
+        </member>
+        <member name="M:Elixir.Xml.Example.#ctor(System.Object)">
+            <summary>
+            Contructs an Element example object
+            </summary>
+            <param name="exampleObject">The example object</param>
+        </member>
+        <member name="M:Elixir.Xml.Example.#ctor(System.Object,System.Boolean)">
+            <summary>
+            Constructs an example object.  If <c>isAttribute</c> is <c>false</c>, then constructs an Element example object;
+            otherwise constructs an Attribute example object
+            </summary>
+            <param name="exampleObject">The example object</param>
+            <param name="isAttribute">If false, then constructs an Element example object;  otherwise constructs an Attribute example object</param>
+        </member>
+        <member name="P:Elixir.Xml.Example.ExampleObject">
+            <summary>
+            Get the example object
+            </summary>
+        </member>
+        <member name="P:Elixir.Xml.Example.IsAttribute">
+            <summary>
+            Get whether the properties of the example object represents elements or attributes.
+            If <c>true</c> then the wrapped object properties represent attributes, otherwise, they represent elements.
+            </summary>
+        </member>
+        <member name="T:Elixir.Xml.AttributeExample">
+            <summary>
+            Wraps example object for attribute
+            </summary>
+        </member>
+        <member name="M:Elixir.Xml.AttributeExample.#ctor(System.Object)">
+            <summary>
+            Constructs an example object where the object's properties represent XML attributes
+            </summary>
+            <param name="exampleObject">The example object</param>
+        </member>
+        <member name="T:Elixir.Xml.XmlToJson">
+            <summary>
+            Convert XML document to its JSON equivalent
+            </summary>
+        </member>
+        <member name="M:Elixir.Xml.XmlToJson.Convert(System.String)">
+            <summary>
+            Returns JSON string from pure xml string (namespace optional)
+            </summary>
+            <param name="xmlString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Elixir.Xml.XmlToJson.Convert(System.Xml.XmlDocument)">
+            <summary>
+            Returns JSON string based on the XML document passed in 
+            </summary>
+            <param name="xmlDoc">source document for JSON result</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

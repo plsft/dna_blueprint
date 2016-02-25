@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telerik.Web.Device.Detection</name>
+    </assembly>
+    <members>
+        <member name="M:Telerik.Web.Device.Detection.Detector.GetScreenDimensions(System.String)">
+            <summary>
+            Returns the screens dimensions of the device made request in CSS pixels. If there is no match the dimensions will be 0.
+            </summary>
+        </member>
+        <member name="M:Telerik.Web.Device.Detection.Detector.GetScreenSize(System.String)">
+             <summary>
+             Returns the screens size based on default screen ranges (in CSS pixels).
+             </summary>
+             <remarks>
+            The default ranges are:
+             Small (to 600) CSS pixels
+             Medium (601-1024) CSS pixels
+             Large (1025 - 1366) CSS pixels
+             ExtraLarge (over 1366) CSS pixels
+             </remarks>
+        </member>
+        <member name="M:Telerik.Web.Device.Detection.Detector.GetScreenSize(System.String,Telerik.Web.Device.Detection.ScreenRanges)">
+            <summary>
+            Returns the screens size based on custom screen ranges (in CSS pixels).
+            </summary>
+        </member>
+        <member name="T:Telerik.Web.Device.Detection.DeviceModelData">
+            <summary>
+            Used to serialize/deserialize the data about the devices - model and dimensions
+            </summary>
+        </member>
+        <member name="T:Telerik.Web.Device.Detection.DeviceScreenDimensions">
+            <summary>
+            Contains the device dimensions in CSS pixels
+            </summary>
+        </member>
+        <member name="M:Telerik.Web.Device.Detection.DeviceScreenDimensions.#ctor">
+            <summary>
+            Default constructor of the DeviceScreenDimensions
+            </summary>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.DeviceScreenDimensions.Width">
+            <summary>
+            Gets the device width in CSS pixels.
+            </summary>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.DeviceScreenDimensions.Height">
+            <summary>
+            Gets the device height in CSS pixels.
+            </summary>
+        </member>
+        <member name="T:Telerik.Web.Device.Detection.DeviceScreenSize">
+             <summary>
+             The device screen size based on the its dimensions in CSS pixels
+             </summary>
+             <remarks>
+            The default ranges are:
+             Small (to 600) CSS pixels
+             Medium (601-1024) CSS pixels
+             Large (1025 - 1366) CSS pixels
+             ExtraLarge (over 1366) CSS pixels
+             </remarks>
+        </member>
+        <member name="T:Telerik.Web.Device.Detection.ScreenRange">
+            <summary>
+            Used to define custom range
+            </summary>
+        </member>
+        <member name="M:Telerik.Web.Device.Detection.ScreenRange.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor of the ScreenRange class. The overload params are assigned to the public properties
+            </summary>
+            <param name="minimum"></param>
+            <param name="maximum"></param>
+        </member>
+        <member name="M:Telerik.Web.Device.Detection.ScreenRange.ContainsValue(System.Int32)">
+            <summary>
+            Determines if the provided value is inside the range
+            </summary>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.ScreenRange.Minimum">
+            <summary>
+            Minimum value of the range
+            </summary>
+            <remarks>
+            The values should considered as CSS pixels not as a standard ones
+            </remarks>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.ScreenRange.Maximum">
+            <summary>
+            Maximum value of the range
+            </summary>
+            <remarks>
+            The values should considered as CSS pixels not as a standard ones
+            </remarks>
+        </member>
+        <member name="T:Telerik.Web.Device.Detection.ScreenRanges">
+            <summary>
+            ScreenRanges is used to define custom ranges
+            </summary>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.ScreenRanges.ExtraLargeScreenSizeRange">
+            <summary>
+            Gets or sets the extra large screen range
+            </summary>
+            <remarks>
+            The range should considered in CSS pixels not as a standard ones
+            </remarks>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.ScreenRanges.LargeScreenSizeRange">
+            <summary>
+            Gets or sets the large screen range
+            </summary>
+            <remarks>
+            The range should considered in CSS pixels not as a standard ones
+            </remarks>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.ScreenRanges.MediumScreenSizeRange">
+            <summary>
+            Gets or sets the medium screen range
+            </summary>
+            <remarks>
+            The range should considered in CSS pixels not as a standard ones
+            </remarks>
+        </member>
+        <member name="P:Telerik.Web.Device.Detection.ScreenRanges.SmallScreenSizeRange">
+            <summary>
+            Gets or sets the small screen range
+            </summary>
+            <remarks>
+            The range should considered in CSS pixels not as a standard ones
+            </remarks>
+        </member>
+    </members>
+</doc>

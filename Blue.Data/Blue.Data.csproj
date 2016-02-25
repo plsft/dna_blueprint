@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{707D0D0B-D3E4-4676-AB4E-8A30761EA1C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blue.Data</RootNamespace>
+    <AssemblyName>Blue.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Helix">
+      <HintPath>..\libs\Helix.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ControllerContainerRepair.cs" />
+    <Compile Include="Infra\AppDataRepository.cs" />
+    <Compile Include="Infra\AppUserRepository.cs" />
+    <Compile Include="Infra\Auditor.cs" />
+    <Compile Include="Constants\BlueConstants.cs" />
+    <Compile Include="Controllers\ControllerContainer.cs" />
+    <Compile Include="Controllers\GenericControllerBase.cs" />
+    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="CustomModels\CustomerInvoicePartModel.cs" />
+    <Compile Include="CustomModels\ICustomModel.cs" />
+    <Compile Include="Enums\PartStatusEnum.cs" />
+    <Compile Include="Enums\UserRoles.cs" />
+    <Compile Include="Extentions\StringExtensionMethods.cs" />
+    <Compile Include="Infra\AppAuditRepository.cs" />
+    <Compile Include="Infra\AppRepository.Events.cs" />
+    <Compile Include="Infra\DataLocker.cs" />
+    <Compile Include="Infra\IAppRepository.cs" />
+    <Compile Include="Infra\AppRepository.cs" />
+    <Compile Include="Models\Audit.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\Lock.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderHeader.cs" />
+    <Compile Include="Models\Part.cs" />
+    <Compile Include="Models\PartHistory.cs" />
+    <Compile Include="Models\Repair\repROCommentsTempDetail.cs" />
+    <Compile Include="Models\Repair\repROCommentsTempHeader.cs" />
+    <Compile Include="Models\Repair\repROTempDetail.cs" />
+    <Compile Include="Models\Repair\repROTempHeader.cs" />
+    <Compile Include="Models\Repair\CSTROINFPF.cs" />
+    <Compile Include="Models\Repair\VREPROX.cs" />
+    <Compile Include="Models\Repair\VREROMS_HEADER_DS_ADDR.cs" />
+    <Compile Include="Models\Repair\VREVROX.cs" />
+    <Compile Include="Models\Repair\VRERRMS_DETAILS.cs" />
+    <Compile Include="Models\Repair\VRERRMS_HEADER.cs" />
+    <Compile Include="Models\Repair\VREROMS_DETAIL.cs" />
+    <Compile Include="Models\Repair\VREROMS_HEADER.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\UserObject.cs" />
+    <Compile Include="Models\UserRoles.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\RepositoryContainerRepair.cs" />
+    <Compile Include="Repository\RepositoryContainer.cs" />
+    <Compile Include="Sql\Api\SqlCommands.cs" />
+    <Compile Include="Sql\Customers\SqlCommands.cs" />
+    <Compile Include="Validation\EntityValidationResult.cs" />
+    <Compile Include="Validation\EntityValidator.cs" />
+    <Compile Include="Validation\NotEqualAttribute.cs" />
+    <Compile Include="Validation\RegexAttribute.cs" />
+    <Compile Include="Validation\Validate.cs" />
+    <Compile Include="Validation\ValidationActionType.cs" />
+    <Compile Include="Validation\ValidationExceptionParser.cs" />
+    <Compile Include="ViewModels\CustomerInvociePartView.cs" />
+    <Compile Include="ViewModels\PartsAdvancedSearchView.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sql\Repairs\" />
+    <Folder Include="ViewModels\Repairs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blue.General\Blue.General.csproj">
+      <Project>{96ebb7de-a786-4fc9-aa1a-cd191c142b43}</Project>
+      <Name>Blue.General</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
