@@ -7,7 +7,6 @@ using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 
-using Blue.Data.Models.Repair;
 using Blue.Library.Api;
 using Blue.Library.Exceptions;
 using Blue.Library.Services;

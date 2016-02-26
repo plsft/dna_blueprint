@@ -19,3 +19,13 @@ C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Debug\RazorTemplates.Core.xml
 C:\plsft\kellstrom\src\Blueprint\Blue.General\bin\Debug\System.Web.Razor.xml
 C:\plsft\kellstrom\src\Blueprint\Blue.General\obj\Debug\Blue.General.dll
 C:\plsft\kellstrom\src\Blueprint\Blue.General\obj\Debug\Blue.General.pdb
+C:\plsft\msft\Blue.General\bin\Debug\Blue.General.dll
+C:\plsft\msft\Blue.General\bin\Debug\Blue.General.pdb
+C:\plsft\msft\Blue.General\bin\Debug\Helix.dll
+C:\plsft\msft\Blue.General\bin\Debug\RazorTemplates.Core.dll
+C:\plsft\msft\Blue.General\bin\Debug\System.Web.Razor.dll
+C:\plsft\msft\Blue.General\bin\Debug\Helix.pdb
+C:\plsft\msft\Blue.General\bin\Debug\RazorTemplates.Core.xml
+C:\plsft\msft\Blue.General\bin\Debug\System.Web.Razor.xml
+C:\plsft\msft\Blue.General\obj\Debug\Blue.General.dll
+C:\plsft\msft\Blue.General\obj\Debug\Blue.General.pdb

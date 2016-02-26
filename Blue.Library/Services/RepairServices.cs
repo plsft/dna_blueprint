@@ -3,7 +3,6 @@ using System.Linq;
 
 using Blue.Data.Constants;
 using Blue.Data.Controllers;
-using Blue.Data.Models.Repair;
 using Blue.Data.ViewModels;
 using Blue.Library.Exceptions;
 using Blue.Library.Requests;
@@ -13,12 +12,10 @@ namespace Blue.Library.Services
 {
     public sealed class RepairServices
     {
-        private readonly ControllerContainerRepair.VREROMS_HEADERController _VREROMS_HEADERController;
         private readonly string _token;
 
         public RepairServices(string token)
         {
-            _VREROMS_HEADERController = new ControllerContainerRepair.VREROMS_HEADERController();
             _token = token;
         }
 
@@ -37,7 +34,7 @@ namespace Blue.Library.Services
 
             return new DataResponse
             {
-                Results = _VREROMS_HEADERController.Select(domainSql, documentNo),
+                Results = null,
                 Message = BlueConstants.SUCCESS,
                 Success = true,
             };

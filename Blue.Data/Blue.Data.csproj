@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ControllerContainerRepair.cs" />
     <Compile Include="Infra\AppDataRepository.cs" />
     <Compile Include="Infra\AppUserRepository.cs" />
     <Compile Include="Infra\Auditor.cs" />
@@ -78,18 +77,6 @@
     <Compile Include="Models\OrderHeader.cs" />
     <Compile Include="Models\Part.cs" />
     <Compile Include="Models\PartHistory.cs" />
-    <Compile Include="Models\Repair\repROCommentsTempDetail.cs" />
-    <Compile Include="Models\Repair\repROCommentsTempHeader.cs" />
-    <Compile Include="Models\Repair\repROTempDetail.cs" />
-    <Compile Include="Models\Repair\repROTempHeader.cs" />
-    <Compile Include="Models\Repair\CSTROINFPF.cs" />
-    <Compile Include="Models\Repair\VREPROX.cs" />
-    <Compile Include="Models\Repair\VREROMS_HEADER_DS_ADDR.cs" />
-    <Compile Include="Models\Repair\VREVROX.cs" />
-    <Compile Include="Models\Repair\VRERRMS_DETAILS.cs" />
-    <Compile Include="Models\Repair\VRERRMS_HEADER.cs" />
-    <Compile Include="Models\Repair\VREROMS_DETAIL.cs" />
-    <Compile Include="Models\Repair\VREROMS_HEADER.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Stock.cs" />
@@ -98,7 +85,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\RepositoryContainerRepair.cs" />
     <Compile Include="Repository\RepositoryContainer.cs" />
     <Compile Include="Sql\Api\SqlCommands.cs" />
     <Compile Include="Sql\Customers\SqlCommands.cs" />
